@@ -9,3 +9,6 @@ add_executable(ex_2_1_arrays_and_pointers_declarations chapter_1/ex_2_1_arrays_a
 add_executable(ex_2_2_arrays_and_pointers_stack chapter_1/ex_2_2_arrays_and_pointers_stack.cpp)
 
 add_executable(ex_1_polynomial chapter_2/ex_1_polynomial.cpp)
+add_executable(ex_2_move_assignment chapter_2/ex_2_move_assignment.cpp)
+add_executable(example chapter_2/example.cpp)
+add_executable(example_2 chapter_2/example_2.cpp)
