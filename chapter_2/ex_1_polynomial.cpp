@@ -82,7 +82,11 @@ class Polynomial {
         // Whereas the goal of the copy constructor and copy assignment is to make a copy of one object to another,
         // the goal of the move constructor and move assignment is to move ownership of the resources from one object
         // to another (which is much less expensive than making a copy).
-        // A function always returns by value instead of by reference. Therefore defining move is important.
+        // Best description found: https://www.internalpointers.com/post/c-rvalue-references-and-move-semantics-beginners
+        // Best description of lvalues and rvalues: https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c
+
+        // In reality all these are equivalent to the default declared behaviour (automatically added by the compiler)
+        // and are not necessary
 
         // Copy constructor - deep copy
         // This method constructs a new object. p is the old object
@@ -93,6 +97,7 @@ class Polynomial {
         }
 
         // Move constructor - shallow copy (no copy)
+        // Argument is a rvalue reference. i.e. can take temporary/non-addressed objects as an argument that are mutable
         Polynomial(Polynomial&& p) noexcept : degree(p.degree) {
             std::cout << "Move constructor" << std::endl;
             coefficients = std::move(p.coefficients);
@@ -100,6 +105,7 @@ class Polynomial {
         }
 
         // Copy assignment
+        // Notice that a reference is returned and the argument is also a lvalue reference
         Polynomial& operator=(const Polynomial& p) {
             std::cout << "Copy assignment" << std::endl;
             degree = p.degree;
@@ -108,6 +114,7 @@ class Polynomial {
         }
 
         // Move assignment
+        // Argument is a rvalue reference
         Polynomial& operator=(Polynomial&& p) {
             std::cout << "Move assignment" << std::endl;
             degree = p.degree;
@@ -182,8 +189,6 @@ int main() {
     default_constructor();
     initializer_list();
     copy_and_move_semantics();
-
-
 
     return 0;
 }
