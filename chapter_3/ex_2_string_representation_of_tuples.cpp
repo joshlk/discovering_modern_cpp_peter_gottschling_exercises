@@ -41,7 +41,7 @@ string to_tuple_string (T a, P ...b) {
 
 int main () {
     // Prints: "(1, 2, 3.1, 4)"
-    string s = to_tuple_string(1, "2", 3.1, 4);
+    string s = to_tuple_string(false, 1, "2", 3.1, 4);
     std::cout << s;
 
     return 0;
