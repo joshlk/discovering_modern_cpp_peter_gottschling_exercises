@@ -25,6 +25,7 @@ class FullStack: public std::exception
 
 template <typename T>
 class GenericStack {
+
     public:
         GenericStack (unsigned int max_size): max_size(max_size) {
             stack = std::unique_ptr<T[]>(new T[max_size]);
@@ -80,6 +81,7 @@ class GenericStack {
         std::unique_ptr<T[]> stack; // Using a unique_pointer array instead of vector to make it harder
 };
 
+// Explicit instantiation of class for different types
 template class GenericStack<double>;
 template class GenericStack<bool>;
 template class GenericStack<std::vector<double>>;
