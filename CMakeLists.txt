@@ -9,6 +9,6 @@ add_executable(ex_2_1_arrays_and_pointers_declarations chapter_1/ex_2_1_arrays_a
 add_executable(ex_2_2_arrays_and_pointers_stack chapter_1/ex_2_2_arrays_and_pointers_stack.cpp)
 
 add_executable(ex_1_polynomial chapter_2/ex_1_polynomial.cpp)
-add_executable(ex_4_resource_rescue chapter_2/ex_4_resource_rescue.cpp)
 add_executable(sandbox chapter_3/sandbox.cpp)
 add_executable(ex_1_string_representation chapter_3/ex_1_string_representation.cpp)
+add_executable(ex_2_string_representation_of_tuples chapter_3/ex_2_string_representation_of_tuples.cpp)
