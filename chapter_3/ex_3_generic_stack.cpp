@@ -6,19 +6,16 @@
 #include <vector>
 #include <exception>
 
+// Exercises 3 and 8
 
-class EmptyStack: public std::exception
-{
-    virtual const char* what() const throw()
-    {
+class EmptyStack: public std::exception {
+    virtual const char* what() const throw() {
         return "The stack is empty.";
     }
 } emptystack;
 
-class FullStack: public std::exception
-{
-    virtual const char* what() const throw()
-    {
+class FullStack: public std::exception {
+    virtual const char* what() const throw() {
         return "The stack is full.";
     }
 } fullstack;
@@ -27,7 +24,7 @@ template <typename T>
 class GenericStack {
 
     public:
-        GenericStack (unsigned int max_size): max_size(max_size) {
+        GenericStack (unsigned int max_size = 4096): max_size(max_size) {
             stack = std::unique_ptr<T[]>(new T[max_size]);
             size = 0;
         }

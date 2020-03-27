@@ -61,20 +61,30 @@ public:
 
     // ------ BEGINNING: Own work
 private:
+    // Type definitions. Create new types here
     using iterator = T * ;
     using const_iterator = const T * ;
 
 public:
 
-    T* begin() {
+    iterator begin () {
         return &data[0];
     }
 
-    T* end () {
+    const_iterator begin () const {
+        return &data[0];
+    }
+
+    iterator end () {
+        return &data[my_size];
+    }
+
+    const_iterator end () const {
         return &data[my_size];
     }
 };
 
+// Func `accumulate_array` from book
 template <typename T>
 T accumulate_array(T *a, T *a_end) {
     T sum(0);
