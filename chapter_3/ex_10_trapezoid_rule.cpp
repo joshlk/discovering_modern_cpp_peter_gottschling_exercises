@@ -5,37 +5,48 @@
 #include <cmath>
 #include <iostream>
 
+template <typename F, unsigned N>
+class nth_derivative
+{
+    using prev_derivative= nth_derivative<F,  N-1>;
+public:
+    nth_derivative(const F& f, double h) : h(h), fp(f, h) {}
+
+    double operator()(double x) const {
+        return ( fp(x) - fp(x-h) ) / h;
+    }
+private:
+    double h;
+    prev_derivative fp;
+};
+
+// Specialisation of `nth_derivative` class for N = 1 (to stop infinite recursion)
 template <typename F>
-class Integral {
-
+class nth_derivative<F, 1>{
     public:
-        Integral(const F& f, const int n) : n(n), f(f) {}
+        nth_derivative(const F& f, double h) : h(h), f(f) {}
 
-        double operator()(double a, double b) const {
-            double h = (b - a)/n;
-
-            double sum = 0;
-            for (int i = 0; i++; i < n) {
-                sum += f(a + i*h);
-            }
-
-            return h*f(a)/2.0 + h*f(b)/2.0 + h*sum;
+        double operator()(double x) const {
+            return ( f(x) - f(x-h) ) / h;
         }
-    protected:
-        double n;
-        F f;
+
+    private:
+        double h;
+        const F f;
 };
 
-// Functor - Function Object (make an object so can pass it as a type parameter)
-struct exp3t {
-    double operator() (double x) const {
-        return std::exp(3.0 * x); }
+// 2*cos(x) + x^2
+class cos_func {
+    public:
+        cos_func () = default;
+        double operator()(double x) const {
+            return (2*std::cos(x)) + (x*x);
+        }
 };
-
 
 int main() {
-    std::cout << exp3t()(10) << std::endl;
+    double dd = nth_derivative<cos_func, 2>(cos_func(), 0.01)(1);
+    std::cout << dd;
 
-    Integral<exp3t> S(exp3t(), 10);
-    std::cout << S(0, 1);
+    return 0;
 }
