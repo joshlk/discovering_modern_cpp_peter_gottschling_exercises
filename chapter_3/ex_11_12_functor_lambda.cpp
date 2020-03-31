@@ -32,21 +32,31 @@ class nth_derivative<F, 1>{
 
     private:
         double h;
-        const F f;
+        F f;
 };
 
+// Functor
 // 2*cos(x) + x^2
 class cos_func {
     public:
-        cos_func () = default;
+        cos_func (double a = 2): a(a) {}
         double operator()(double x) const {
-            return (2*std::cos(x)) + (x*x);
+            return (a*std::cos(x)) + (x*x);
         }
+    private:
+        double a;
 };
 
 int main() {
+    // Functor
     double dd = nth_derivative<cos_func, 2>(cos_func(), 0.01)(1);
-    std::cout << dd;
+    std::cout << dd << std::endl;
+
+    // Lambda
+    double a = 2;
+    auto cos_lambda = [a](double x){ return (a*std::cos(x)) + (x*x); };
+    double dd2 = nth_derivative<decltype(cos_lambda), 2>(cos_lambda, 0.01)(1);
+    std::cout << dd2 << std::endl;
 
     return 0;
 }

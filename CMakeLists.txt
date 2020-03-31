@@ -16,6 +16,5 @@ add_executable(ex_3_generic_stack chapter_3/ex_3_generic_stack.cpp)
 add_executable(iterator_of_a_vector chapter_3/ex_4_iterator_of_a_vector.cpp)
 add_executable(ex_5_odd_iterator chapter_3/ex_5_and_6_odd_iterator.cpp)
 add_executable(ex_9_deducing_non_type_template_arguments chapter_3/ex_9_deducing_non_type_template_arguments.cpp)
-add_executable(ex_10_trapezoid_rule chapter_3/ex_10_trapezoid_rule.cpp)
-add_executable(ch_11_functor chapter_3/ch_11_functor.cpp)
-add_executable(ex_12_lambda chapter_3/ex_12_lambda.cpp)
+add_executable(ex_11_12_functor_lambda chapter_3/ex_11_12_functor_lambda.cpp)
+
