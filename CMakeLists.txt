@@ -19,3 +19,15 @@ add_executable(ex_9_deducing_non_type_template_arguments chapter_3_generic_progr
 add_executable(ex_11_12_functor_lambda chapter_3_generic_programming/ex_11_12_functor_lambda.cpp)
 add_executable(ex_1_sorting_by_magnitude chapter_4_libraries/ex_1_sorting_by_magnitude.cpp)
 add_executable(ex_2_stl_container chapter_4_libraries/ex_2_stl_container.cpp)
+add_executable(ex_1_type_traits.cpp chapter_5_meta_programming/ex_1_type_traits.cpp)
+
+##### BEGIN: For chapter_4_libraries/mandelbrot.cpp you need to include SDL v1.2 for visualisation.
+# First `brew install sdl` on MacOS
+# Then added `FindSDL.cmake` file to cmake dir
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${project_SOURCE_DIR}/cmake")
+find_package (SDL REQUIRED)
+include_directories (${SDL_INCLUDE_DIR}) # SDL v1.2 (not SDL v2)
+
+add_executable(mandelbrot chapter_4_libraries/mandelbrot.cpp)
+target_link_libraries(mandelbrot ${SDL_LIBRARY})
+##### END
