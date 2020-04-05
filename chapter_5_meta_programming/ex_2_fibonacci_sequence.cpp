@@ -14,7 +14,7 @@ struct FibonacciSequence {
             S[i] = S[i-1] + S[i-2];
         }
     }
-    int S[N+1];  // Default initialisation of zeros
+    int S[N+1];  // Can't work out how to use `std::array` in `constexpr`
 };
 
 int main() {

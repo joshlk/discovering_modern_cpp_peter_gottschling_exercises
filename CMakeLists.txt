@@ -33,3 +33,4 @@ target_link_libraries(mandelbrot ${SDL_LIBRARY})
 
 add_executable(ex_1_type_traits.cpp chapter_5_meta_programming/ex_1_type_traits.cpp)
 add_executable(ex_2_fibonacci_sequence.cpp chapter_5_meta_programming/ex_2_fibonacci_sequence.cpp)
+add_executable(greatest_common_divisor.cpp chapter_5_meta_programming/ex_3_greatest_common_divisor.cpp)
